@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard - BookVerse</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard_style.css">
+</head>
+<body>
+  <div class="page-grid">
+    <aside class="sidebar">
+      <div class="logo">BookVerse Admin</div>
+      <nav>
+        <a href="/admin/admin_dashboard.html">Dashboard</a>
+        <a href="/admin/manage_books.html">Manage Books</a>
+        <a href="/admin/history.html">User History</a>
+        <a id="nav-notifications" href="#">Notifications</a>
+        <a id="nav-feedback" href="#">Feedback</a>
+        <a id="nav-users" href="#">Users</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </aside>
+    <main class="main-area">
+      <h2 class="main-head">Admin Dashboard</h2>
+      <section class="dashboard-cards">
+        <div class="card">Total Books <div id="totalBooks">0</div></div>
+        <div class="card">Total Users <div id="totalUsers">0</div></div>
+        <div class="card">Unread Notifications <div id="totalNotifs">0</div></div>
+      </section>
+      <section id="manageArea">
+        <h3>Welcome, Admin!</h3>
+        <p>Use the sidebar to manage books, users, and view feedback and notifications.</p>
+      </section>
+    </main>
+  </div>
+  <script src="/js/admin.js"></script>
+  <script src="/js/toast.js"></script>
+</body>
+</html>

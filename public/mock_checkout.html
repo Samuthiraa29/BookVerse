@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mock Checkout</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div style="max-width:480px;margin:40px auto;padding:20px;background:#fff;border-radius:12px;text-align:center;">
+    <h2>Mock Checkout</h2>
+    <p>This is a local mock checkout for testing Buy/Rent without Stripe keys.</p>
+    <div id="info"></div>
+    <div style="margin-top:20px">
+      <button id="complete" class="btn">Complete Payment</button>
+      <button id="cancel" class="btn ghost">Cancel</button>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const book = params.get('book');
+    const mode = params.get('mode');
+    document.getElementById('info').innerText = `Book: ${book || 'unknown'} | Mode: ${mode || 'buy'}`;
+    document.getElementById('complete').addEventListener('click', ()=>{
+      // simulate successful payment redirect
+      window.location.href = `${window.location.origin}/user/user_dashboard.html?payment=success&book=${book}&mode=${mode}`;
+    });
+    document.getElementById('cancel').addEventListener('click', ()=>{
+      window.location.href = `${window.location.origin}/user/user_dashboard.html?payment=cancel`;
+    });
+  </script>
+</body>
+</html>

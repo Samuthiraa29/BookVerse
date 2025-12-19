@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Confirm Payment</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #eef2f7;
+      font-family: 'Poppins', sans-serif;
+    }
+    .payment-card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      width: 380px;
+      max-width: 95%;
+      text-align: center;
+    }
+    .payment-card h2 {
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    .payment-card p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    #message { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="payment-card">
+    <div id="actions">
+      <h2>UPI Payment</h2>
+      <p>Pay <strong id="amount">...</strong> to BookVerse?</p>
+      <button id="confirmPayment" class="btn">Proceed Payment</button>
+      <button id="cancelPayment" class="btn ghost">Cancel</button>
+    </div>
+    <div id="message" style="display: none;"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get('txn_id');
+    const amount = params.get('amount');
+    document.getElementById('amount').innerText = `$${amount}`;
+
+    function sendConfirmation(status) {
+      document.getElementById('actions').style.display = 'none';
+      const messageEl = document.getElementById('message');
+      messageEl.style.display = 'block';
+      messageEl.innerText = 'Confirmation sent. You can close this window.';
+
+      // This public endpoint will trigger the private Pusher message on the server
+      fetch('/api/payment-relay', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transactionId, status })
+      }).finally(() => setTimeout(() => window.close(), 2000));
+    }
+
+    document.getElementById('confirmPayment').addEventListener('click', () => sendConfirmation('success'));
+    document.getElementById('cancelPayment').addEventListener('click', () => sendConfirmation('cancelled'));
+  </script>
+</body>
+</html>

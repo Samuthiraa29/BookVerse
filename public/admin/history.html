@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>User History - Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="page-grid">
+    <aside class="sidebar">
+      <div class="logo">BookVerse Admin</div>
+      <nav>
+        <a href="/admin/admin_dashboard.html">Dashboard</a>
+        <a href="/admin/manage_books.html">Manage Books</a>
+        <a href="/admin/history.html">User History</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </aside>
+    <main id="mainArea" class="main-area">
+      <div class="main-head">
+        <h2>User Activity History</h2>
+        <div>
+          <select id="userSelector"><option value="">Select a user...</option></select>
+          <button id="deleteHistoryBtn" class="btn ghost" style="display: none;">Delete History</button>
+        </div>
+      </div>
+      <div id="historyList"><p>Please select a user to view their history.</p></div>
+    </main>
+  </div>
+  <script src="/js/admin_history.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Manage Books - BookVerse</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="page-grid">
+    <aside class="sidebar">
+      <div class="logo">BookVerse Admin</div>
+      <nav>
+        <a href="/admin/admin_dashboard.html">Dashboard</a>
+        <a href="/admin/manage_books.html" class="active">Manage Books</a>
+        <a href="/admin/history.html">User History</a>
+        <a id="nav-notifications" href="#">Notifications</a>
+        <a id="nav-feedback" href="#">Feedback</a>
+        <a id="nav-users" href="#">Users</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </aside>
+
+    <main class="main-area">
+      <header class="main-head">
+        <h2>Manage Books</h2>
+        <button id="addBookBtn" class="btn">+ Add Book</button>
+      </header>
+
+      <section id="booksList" class="cards-grid"></section>
+
+      <!-- Add / Edit modal -->
+      <div id="bookFormWrap" class="modal hidden">
+        <form id="bookForm" class="auth-card">
+          <h3 id="formTitle">Add Book</h3>
+          <input name="title" placeholder="Title" required />
+          <input name="author" placeholder="Author" />
+          <input name="price" placeholder="Price USD" type="number" />
+          <input name="rentPrice" placeholder="Rent Price USD" type="number" />
+          <textarea name="description" placeholder="Description"></textarea>
+          <input name="coverImage" placeholder="Image URL" />
+          <input name="stock" placeholder="Stock" type="number" />
+          <div class="row">
+            <button class="btn" type="submit">Save</button>
+            <button id="cancelForm" type="button" class="btn ghost">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/admin.js"></script>
+  <script src="/js/toast.js"></script>
+</body>
+</html>
